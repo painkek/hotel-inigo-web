@@ -2,7 +2,7 @@ import React from 'react'
 import './AboutSection.css'
 import aboutImg from '../../images/hero1.jpg'
 import aboutImg2 from '../../images/hero2.jpg'
-import aboutImg3 from '../../images/about-1.jpg'
+import aboutImg3 from '../../images/about/about-1.jpg'
 
 const AboutSection = () => {
     return (

@@ -7,6 +7,7 @@
 .gallery-title {
     text-align: center;
     margin-bottom: 50px;
+    font-family: "Playfair Display", serif;
     font-size: 2.5rem;
 }
 
@@ -81,21 +82,17 @@
     width: 100%;
     margin-top: 20px;
     text-align: center;
-}
-
-:root {
-    --swiper-theme-color: #a67c52;
-    --swiper-pagination-bullet-inactive-color: #544949;
-    --swiper-pagination-bullet-inactive-opacity: 1;
-    --swiper-pagination-bullet-size: 10px;
-    --swiper-pagination-bullet-horizontal-gap: 6px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
 }
 
 /* Pagination dots */
 .swiper-pagination-bullet {
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: brown;
+    opacity: 1;
 }
 
 .slider-dots-active {
-    background-color: var(--swiper-theme-color) !important;
+    background-color: #a67c52;
 }

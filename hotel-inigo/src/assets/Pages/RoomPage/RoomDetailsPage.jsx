@@ -4,10 +4,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
 import { Autoplay } from 'swiper/modules'
 import RoomDataDetails from './RoomDataDetails'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const RoomDetailsPage = ({ isOpen, onClose, roomname }) => {
+    const navigate = useNavigate();
 
     if (!isOpen) return null;
 
@@ -25,6 +26,11 @@ const RoomDetailsPage = ({ isOpen, onClose, roomname }) => {
         );
     }
 
+    const handleBookNow = () => {
+        onClose();
+        navigate('/booking');
+    };
+
     return (
 
         <div className="modal-overlay" onClick={(e) => {
@@ -39,7 +45,7 @@ const RoomDetailsPage = ({ isOpen, onClose, roomname }) => {
                                 modules={[Autoplay]}
                                 spaceBetween={0}
                                 slidesPerView={1}
-                                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
                                 loop={true}
                                 className="room-swiper"
                             >
@@ -59,9 +65,9 @@ const RoomDetailsPage = ({ isOpen, onClose, roomname }) => {
                                         <p>{currentRoom.currency}{currentRoom.price.toLocaleString()}/Night</p>
                                     </div>
                                 </div>
-                                <Link to="/booking">
-                                    <button className="book-now-btn">Book Now</button>
-                                </Link>
+
+                                <button className="book-now-btn" onClick={handleBookNow}>Book Now</button>
+
 
                             </div>
 

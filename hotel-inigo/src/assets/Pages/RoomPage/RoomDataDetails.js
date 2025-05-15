@@ -1,4 +1,28 @@
 
+import deluxe1 from "../../images/rooms/deluxe.jpg";
+import deluxe2 from "../../images/rooms/deluxe2.jpg";
+import deluxe3 from "../../images/rooms/deluxe3.jpg";
+
+import standard1 from "../../images/rooms/standard.jpg";
+import standard2 from "../../images/rooms/standard2.jpg";
+
+import twin1 from "../../images/rooms/twin-deluxe1.jpg";
+import twin2 from "../../images/rooms/twin-deluxe2.jpg";
+import twin3 from "../../images/rooms/twin-deluxe3.jpg";
+
+import executive1 from "../../images/rooms/executive1.jpg";
+import executive2 from "../../images/rooms/executive2.jpg";
+import executive3 from "../../images/rooms/executive3.jpg";
+
+import special1 from "../../images/rooms/special-executive1.jpg";
+import special2 from "../../images/rooms/special-executive2.jpg";
+import special3 from "../../images/rooms/special-executive3.jpg";
+
+import family1 from "../../images/rooms/family-room1.jpg";
+import family2 from "../../images/rooms/family-room2.jpg";
+import family3 from "../../images/rooms/family-room3.jpg";
+
+
 const RoomDetails = [
     {
         id: 1,
@@ -10,8 +34,8 @@ const RoomDetails = [
         size: "24m²",
         bedType: "One bed",
         images: [
-            'api/placeholder/400/180',
-            'api/placeholder/400/180',
+            standard1,
+            standard2,
             'api/placeholder/400/180'
         ],
         facilities: [
@@ -52,9 +76,9 @@ const RoomDetails = [
         bedType: "King-size bed",
 
         images: [
-            'api/placeholder/400/180',
-            "/api/placeholder/400/180",
-            "/api/placeholder/400/180"
+            deluxe1,
+            deluxe2,
+            deluxe3
         ],
         facilities: [
             "TV",
@@ -90,9 +114,9 @@ const RoomDetails = [
         view: "Garden View",
         bedType: "Two Twin Beds",
         images: [
-            'api/placeholder/400/180',
-            'api/placeholder/400/180',
-            'api/placeholder/400/180'
+            twin1,
+            twin2,
+            twin3
         ],
         facilities: [
             "TV",
@@ -128,9 +152,9 @@ const RoomDetails = [
         view: "City View",
         bedType: "King-size bed",
         images: [
-            "api/placeholder/400/180",
-            "api/placeholder/400/180",
-            "api/placeholder/400/180"
+            executive1,
+            executive2,
+            executive3
         ],
         facilities: [
             "TV",
@@ -166,9 +190,9 @@ const RoomDetails = [
         view: "Ocean View",
         bedType: "King-size bed",
         images: [
-            "api/placeholder/400/180",
-            "api/placeholder/400/180",
-            "api/placeholder/400/180"
+            special1,
+            special2,
+            special3,
         ],
         facilities: [
             "TV",
@@ -204,9 +228,9 @@ const RoomDetails = [
         view: "City View",
         bedType: "Two Queen Beds",
         images: [
-            "api/placeholder/400/180",
-            "api/placeholder/400/180",
-            "api/placeholder/400/180"
+            family1,
+            family2,
+            family3
         ],
         facilities: [
             "TV",

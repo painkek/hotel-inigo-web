@@ -1,9 +1,9 @@
 import React from 'react'
 import './About.css'
 
-import aboutimg1 from '../../images/about-1.jpg'
-import aboutimg2 from '../../images/about-2.jpg'
-import aboutimg3 from '../../images/about-3.jpg'
+import aboutimg1 from '../../images/about/about-1.jpg'
+import aboutimg2 from '../../images/about/about-2.jpg'
+import aboutimg3 from '../../images/about/about-3.jpg'
 
 const About = () => {
 

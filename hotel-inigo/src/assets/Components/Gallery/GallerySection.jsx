@@ -5,18 +5,26 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import 'swiper/swiper-bundle.css';
 
+import img1 from '../../images/gallery/hotel-img-1.jpg';
+import img2 from '../../images/gallery/hotel-img-2.jpg';
+import img3 from '../../images/gallery/hotel-img-3.jpg';
+import img4 from '../../images/gallery/hotel-img-4.jpg';
+import img5 from '../../images/gallery/hotel-img-5.jpg';
+import img6 from '../../images/gallery/hotel-img-6.jpg';
+import img7 from '../../images/gallery/hotel-img-7.jpg';
+import img8 from '../../images/gallery/hotel-img-8.jpg';
 
 const GallerySection = () => {
 
     const hotelImages = [
-        { id: 1, src: 'assets/images/hotel-img-1.jpg' },
-        { id: 2, src: 'assets/images/hotel-img-2.jpg' },
-        { id: 3, src: 'assets/images/hotel-img-3.jpg' },
-        { id: 4, src: 'assets/images/hotel-img-4.jpg' },
-        { id: 5, src: 'assets/images/hotel-img-5.jpg' },
-        { id: 6, src: 'assets/images/hotel-img-6.jpg' },
-        { id: 7, src: 'assets/images/hotel-img-7.jpg' },
-        { id: 8, src: 'assets/images/hotel-img-8.jpg' },
+        { id: 1, src: img1 },
+        { id: 2, src: img2 },
+        { id: 3, src: img3 },
+        { id: 4, src: img4 },
+        { id: 5, src: img5 },
+        { id: 6, src: img6 },
+        { id: 7, src: img7 },
+        { id: 8, src: img8 },
     ];
 
     return (
@@ -33,8 +41,10 @@ const GallerySection = () => {
                     spaceBetween={30}
                     slidesPerView={3}
                     breakpoints={{
+                        1024: { slidesPerView: 3 },
                         768: { slidesPerView: 2 },
                         576: { slidesPerView: 1 },
+
                     }}
                     navigation={{
                         nextEl: '.next-button',

@@ -213,7 +213,7 @@ textarea {
 }
 
 .submit-btn {
-    background-color: #827a64;
+    background-color: #63513c;
     color: white;
     padding: 14px 20px;
     border: none;
@@ -226,7 +226,7 @@ textarea {
 }
 
 .submit-btn:hover {
-    background-color: #6f5e4a;
+    background-color: #96754f;
 }
 
 .submit-btn:disabled {

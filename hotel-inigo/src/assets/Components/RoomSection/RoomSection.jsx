@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './RoomSection.css'
-import RoomImg1 from '../../images/room-img1.png'
-import RoomImg2 from '../../images/room-img2.png'
-import RoomImg3 from '../../images/room-img3.png'
+import RoomImg1 from '../../images/rooms/standard.jpg'
+import RoomImg2 from '../../images/rooms/deluxe.jpg'
+import RoomImg3 from '../../images/rooms/executive1.jpg'
 
 
 const RoomSection = () => {

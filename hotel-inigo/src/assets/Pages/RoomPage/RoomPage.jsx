@@ -3,7 +3,7 @@ import "./RoomPage.css";
 import { Link } from "react-router-dom";
 import RoomDetailsPage from "./RoomDetailsPage";
 
-import heroImg from "../../images/room-hero.jpg";
+import heroImg from "../../images/rooms/room-hero.jpg";
 
 
 const RoomPage = () => {

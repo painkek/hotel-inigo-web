@@ -15,7 +15,7 @@ const rooms = [
         title: "Deluxe Room",
         price: "₱3,000",
         description:
-            "Spacious and stylish, offering enhanced comfort and upgraded amenities.",
+            "Elegant and comfortable, offering modern design and upgraded features for a relaxing stay.",
         image: "roomPage/deluxe.jpg"
     },
     {
@@ -31,7 +31,7 @@ const rooms = [
         title: "Executive Room",
         price: "₱3,500",
         description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.",
+            "Sophisticated and refined, featuring elevated comfort and amenities.",
         image: "roomPage/executive.jpg"
     },
     {
@@ -47,7 +47,7 @@ const rooms = [
         title: "Family Room",
         price: "₱4,500",
         description:
-            "Generously sized room with multiple beds, perfect for families or small groups.",
+            "Warm and welcoming, designed for space, comfort, and shared moments.",
         image: "roomPage/family-room.jpg"
     }
 ];

@@ -18,7 +18,6 @@ const Homepage = () => {
       <AboutSection />
       <FunctionHallSection />
       <GallerySection />
-      <Footer />
     </main>
 
   );

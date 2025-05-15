@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Booking.css';
-import contactImg from '../../../assets/images/about-3.jpg';
+import contactImg from '../../../assets/images/about/about-3.jpg';
 import { FaFacebook, FaFacebookMessenger, FaPhone, FaMapMarkedAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 

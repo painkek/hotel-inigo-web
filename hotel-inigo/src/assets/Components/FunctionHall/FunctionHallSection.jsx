@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './FunctionHallSection.css'
 
-import HallImg1 from '../../images/room-img1.png'
-import HallImg2 from '../../images/room-img2.png'
-import HallImg3 from '../../images/room-img3.png'
+import HallImg1 from '../../images/facilities/img-1.jpg'
+import HallImg2 from '../../images/facilities/img-4.jpg'
+import HallImg3 from '../../images/facilities/img-5.jpg'
 
 const FunctionHall = () => {
 
@@ -14,7 +14,7 @@ const FunctionHall = () => {
             <div className="function-hall-container">
                 <div className="function-hall-content">
 
-                    <h1 className="section-heading">Function Hall</h1>
+                    <h1 className="section-heading">Facilities</h1>
                     <small className="description">
                         Hotel Inigo is an ideal venue for meetings, conferences, and special events,
                         offering a blend of elegance and functionality. With thoughtfully designed event spaces,
