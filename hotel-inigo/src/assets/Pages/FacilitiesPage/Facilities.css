@@ -1,0 +1,448 @@
+.facilities-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.facilities-hero {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-image: url(../../images/facilities-hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.facilities-container {
+    text-align: center;
+    margin-bottom: 60px;
+    z-index: 2;
+    color: white;
+    position: relative;
+}
+
+.facilities-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.facilities-container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    color: white;
+    margin: 0 auto;
+}
+
+.facilities-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    overflow-x: visible;
+}
+
+.facility-card {
+    margin-bottom: 100px;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+
+.center-card {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.card-content {
+    display: flex;
+    width: 100%;
+    gap: 40px;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.card-content .reverse {
+    flex-direction: row-reverse;
+}
+
+.image-collage {
+    flex: 1;
+    gap: 8px;
+    display: flex;
+    max-width: 100%;
+}
+
+
+.content-side {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.large-image-container {
+    width: 70%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.large-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+}
+
+.small-images {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+}
+
+.small-images img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+}
+
+.text-content {
+    width: 50%;
+    padding: 0;
+}
+
+.card-description {
+    flex: 1;
+    padding: 30px;
+
+}
+
+.card-description p {
+    text-align: justify;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.cafe-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+}
+
+
+.slider-container {
+    position: relative;
+    transform: translateX(-50%);
+    display: flex;
+    left: 50%;
+    margin: 0 auto;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    max-width: 1500px;
+}
+
+
+.static-content {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px 32px;
+    border-radius: 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+}
+
+.card-content-container {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+
+}
+
+.card-header {
+    margin-top: -10px;
+}
+
+
+.static-content .card-header h2 {
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.static-content .card-description p {
+    text-align: left;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.cafe-slider {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slider-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+@media (max-width: 992px) {
+    .facilities-hero {
+        height: 500px;
+    }
+
+    .facilities-container h2 {
+        font-size: 2.2rem;
+    }
+
+    .card-content {
+        gap: 24px;
+    }
+
+    .large-image-container {
+        margin-right: 12px;
+        height: 300px;
+        width: 65%;
+    }
+
+    .small-images {
+        gap: 8px;
+        height: 300px;
+    }
+
+    .small-images img {
+        height: 50%;
+    }
+
+    .content-side {
+        height: 300px;
+        width: 40%;
+    }
+
+    .text-content {
+        width: 50%;
+    }
+
+    .slider-container {
+        height: 350px;
+    }
+
+    .card-content-container {
+        width: 50%;
+    }
+
+    .static-content {
+        padding: 24px 16px;
+    }
+
+    .static-content .card-header h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* --- Small Tablet and Large Mobile (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .facilities-hero {
+        height: 450px;
+        margin-bottom: 40px;
+    }
+
+    .facilities-container h2 {
+        font-size: 2rem;
+    }
+
+    .facility-card {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+
+    .card-header {
+        order: 1;
+        padding: 16px 8px;
+    }
+
+    .card-header h2 {
+        font-size: 1.7rem;
+    }
+
+    .card-description {
+        order: 2;
+        padding: 16px 8px;
+    }
+
+    .card-content {
+        order: 3;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .image-collage {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        height: 240px;
+    }
+
+    .large-image-container {
+        width: 65%;
+        height: 240px;
+        margin-right: 0;
+    }
+
+    .content-side {
+        width: 35%;
+        height: 240px;
+    }
+
+    .small-images {
+        height: 100%;
+        gap: 12px;
+    }
+
+    .text-content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .card-content-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+    }
+
+    .static-content {
+        background-color: #000;
+        color: white;
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    .slider-container {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .static-content .card-header h2 {
+        color: white;
+        text-align: left;
+        font-size: 1.8rem;
+    }
+
+    .cafe-slider {
+        height: 300px;
+        /* Adjust height for mobile */
+    }
+
+    .static-content .card-description p {
+        color: #ccc;
+    }
+
+}
+
+
+
+/* --- Mobile (max-width: 576px) --- */
+@media (max-width: 576px) {
+    .facilities-hero {
+        height: 300px;
+    }
+
+    .facilities-container h2 {
+        font-size: 1.8rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .facility-card {
+        margin-bottom: 40px;
+    }
+
+    .card-header {
+        padding: 10px 5px;
+    }
+
+    .card-description {
+        padding: 15px 5px;
+    }
+
+    .image-collage {
+        height: 200px;
+        gap: 10px;
+    }
+
+    .large-image-container {
+        height: 200px;
+    }
+
+    .content-side {
+        height: 200px;
+    }
+
+    .small-images {
+        gap: 8px;
+    }
+}

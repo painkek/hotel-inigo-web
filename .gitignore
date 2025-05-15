@@ -1,0 +1,5 @@
+# Ignore Google service account key
+service-account.json
+config/*.json
+
+
