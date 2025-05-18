@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-
+  margin-bottom: 20px;
 }
 
 .hero-section {
@@ -147,7 +147,7 @@
 }
 
 .book-now-button {
-  background-color: #94511d;
+  background-color: #805b29;
   color: white;
   padding: 0.6rem 1.2rem;
   border: none;
@@ -169,7 +169,7 @@
 
 .book-now-button:hover,
 .book-now-button:focus {
-  background-color: #7a4218;
+  background-color: #a98452;
   outline: none;
 
 }

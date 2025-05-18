@@ -115,7 +115,7 @@
 }
 
 .View-All-Button {
-    background-color: #9c6b2b;
+    background-color: #805b29;
     color: white;
     font-weight: 500;
     padding: 0.75rem 2.5rem;
@@ -133,7 +133,7 @@
 }
 
 .View-All-Button:hover {
-    background-color: #bd8430;
+    background-color: #9f743d;
 }
 
 @media (max-width: 1200px) {

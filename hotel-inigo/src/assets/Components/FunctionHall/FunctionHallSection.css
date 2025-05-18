@@ -67,7 +67,7 @@
 }
 
 .view-all-button {
-    background-color: #d4a017;
+    background-color: #805b29;
     color: white;
     border: none;
     border-radius: 30px;
@@ -81,7 +81,7 @@
 }
 
 .view-all-button:hover {
-    background-color: #b58a14;
+    background-color: #9f743d;
 }
 
 @media (max-width: 1024px) {

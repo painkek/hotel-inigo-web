@@ -2,6 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import { google } from 'googleapis';
 import dayjs from 'dayjs';
+import dotenv from 'dotenv';
 
 
 const ROOM_TYPES = [
@@ -24,13 +25,15 @@ const LOCATION_DATA = {
 };
 
 
-const SHEET_ID = '1bUUBug0Ie2ovEqDs9GebvM86Nh9nP-rjGQWkoeadRWI';
+const SHEET_ID = process.env.GOOGLE_SHEET_ID;
 const SHEET_NAME = 'Bookings';
 
-const CREDEDTIALS = JSON.parse(fs.readFileSync('service-account.json', 'utf-8'));
+
+dotenv.config();
+const CREDENTIALS = JSON.parse(process.env.GOOGLE_SHEET_CREDENTIALS);
 
 const auth = new google.auth.GoogleAuth({
-    credentials: CREDEDTIALS,
+    credentials: CREDENTIALS,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
@@ -42,6 +45,7 @@ router.use(express.json());
 
 async function appendBookingToSheet(data) {
     const values = [
+
         [
             data.firstName,
             data.lastName,
@@ -53,17 +57,35 @@ async function appendBookingToSheet(data) {
             data.checkOut,
             data.roomType,
             data.message || '',
+            data.pricePerNight,
+            data.nights,
+            data.totalPrice,
             dayjs().format('YYYY-MM-DD HH:mm:ss'),
         ]
     ];
     // Append the booking data to the Google Sheet
     await sheets.spreadsheets.values.append({
         spreadsheetId: SHEET_ID,
-        range: `${SHEET_NAME}!A1:K1`,
+        range: `${SHEET_NAME}!A:N`,
         valueInputOption: 'USER_ENTERED',
         insertDataOption: 'INSERT_ROWS',
         resource: { values },
     });
+}
+
+//helper: Calculate nights and total price
+
+function calculateNights(checkIn, checkOut) {
+    if (!checkIn || !checkOut) return 0;
+    const inDate = dayjs(checkIn, 'YYYY-MM-DD');
+    const outDate = dayjs(checkOut, 'YYYY-MM-DD');
+    const diff = outDate.diff(inDate, 'day');
+    return diff > 0 ? diff : 0;
+}
+
+function getPricePerNight(roomTypeId) {
+    const selectedRoom = ROOM_TYPES.find(r => r.id === roomTypeId);
+    return selectedRoom ? selectedRoom.price : 0;
 }
 // Helper: Check room availability (simple version)
 async function isRoomAvailable(roomType, checkIn, checkOut) {
@@ -101,12 +123,39 @@ router.post('/submit', async (req, res) => {
         const data = req.body;
         console.log('Booking data:', data);
 
-        const available = await isRoomAvailable(data.roomType, data.checkInDate, data.checkOutDate);
+        const nights = calculateNights(data.checkIn, data.checkOut);
+        const pricePerNight = getPricePerNight(data.roomType);
+        const totalPrice = nights * pricePerNight;
+
+        console.log({
+            pricePerNight,
+            nights,
+            totalPrice,
+            sheetRow: [
+                data.firstName,
+                data.lastName,
+                data.age,
+                data.email,
+                data.contactNo,
+                data.guests,
+                data.checkIn,
+                data.checkOut,
+                data.roomType,
+                data.message || '',
+                pricePerNight,
+                nights,
+                totalPrice,
+                dayjs().format('YYYY-MM-DD HH:mm:ss'),
+            ]
+        });
+
+        const available = await isRoomAvailable(data.roomType, data.checkIn, data.checkOut);
         if (!available) {
             return res.status(400).json({ success: false, message: 'Room is not available for the selected dates.' });
         }
 
-        await appendBookingToSheet(data);
+        await appendBookingToSheet({ ...data, pricePerNight, nights, totalPrice });
+
 
         res.json({ success: true, message: 'Booking data received successfully!' });
     } catch (error) {

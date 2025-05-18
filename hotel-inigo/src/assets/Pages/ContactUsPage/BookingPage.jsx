@@ -18,7 +18,7 @@ const BookingPage = () => {
         checkIn: '',
         checkOut: '',
         roomType: '',
-        message: ''
+        message: '',
     });
 
     const [validationErrors, setValidationErrors] = useState({});
@@ -61,12 +61,18 @@ const BookingPage = () => {
     // Calculations
     const calculateNights = () => {
         if (!formData.checkIn || !formData.checkOut) return 0;
-        return Math.ceil((new Date(formData.checkOut) - new Date(formData.checkIn)) / 86400000);
+        const checkInDate = new Date(formData.checkIn);
+        const checkOutDate = new Date(formData.checkOut);
+        const diffTime = checkOutDate - checkInDate;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays > 0 ? diffDays : 0;
     };
 
 
     const selectedRoom = roomTypes.find(r => r.id === formData.roomType)
-    const totalPrice = calculateNights() * (selectedRoom?.price || 0);
+
+    const nights = calculateNights();
+    const totalPrice = nights * (selectedRoom?.price || 0);
 
     // Validation
     const validateForm = () => {

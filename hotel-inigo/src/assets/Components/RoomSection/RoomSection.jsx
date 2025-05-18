@@ -22,7 +22,7 @@ const RoomSection = () => {
             title: 'Executive Room',
             price: '₱3,500',
             perNight: '/ per night',
-            image: RoomImg2,
+            image: RoomImg3,
 
         },
         {
@@ -30,7 +30,7 @@ const RoomSection = () => {
             title: 'Deluxe Room',
             price: '₱2,500',
             perNight: '/ per night',
-            image: RoomImg3,
+            image: RoomImg2,
 
         },
     ];

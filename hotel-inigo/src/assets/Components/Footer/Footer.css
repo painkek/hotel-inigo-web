@@ -1,17 +1,17 @@
 .footer {
-    padding: 60px 0 20px;
+    padding: 30px 0 10px;
     width: 100%;
     max-width: 1500px;
     margin: 0 auto;
     height: 100%;
-    background-color: #f2d4a1;
+    background-color: #dec7a0;
 }
 
 .footer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: 30px;
     padding: 0 20px;
     gap: 30px;
 
@@ -19,9 +19,9 @@
 
 .footer-section {
     flex: 1;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     min-width: 180px;
-    padding: 0 15px;
+    padding: 0 8px;
     box-sizing: border-box;
 }
 
@@ -45,9 +45,9 @@
 .footer-section h3 {
 
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .footer-section h3::after {
@@ -57,7 +57,7 @@
     left: 0;
     width: 40px;
     height: 2px;
-    background-color: #d4af37;
+    background-color: #967140;
 
 }
 
@@ -134,12 +134,12 @@ address {
 
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
-    margin-top: 20px;
+    padding-top: 10px;
+    margin-top: 10px;
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .footer-bottom p {
@@ -187,11 +187,12 @@ address {
 /* Tablets and large phones (576px to 767px) */
 @media screen and (max-width: 767px) {
     .footer {
-        padding: 40px 0 20px;
+        padding: 30px 0 10px;
     }
 
     .footer-container {
-        gap: 20px;
+        gap: 16px;
+        margin-top: 20px;
     }
 
     .footer-section {
@@ -223,7 +224,8 @@ address {
     }
 
     .footer-section h3 {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
     }
 
     .contact ul li {
