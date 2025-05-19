@@ -41,7 +41,7 @@ const facilities = [
 ];
 
 router.get('/', (req, res) => {
-    console.log('Facilities data requested');
+    res.set('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
     res.json(facilities);
 });
 

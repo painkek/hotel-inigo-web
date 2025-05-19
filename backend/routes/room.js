@@ -53,6 +53,7 @@ const rooms = [
 ];
 
 router.get('/', (req, res) => {
+    res.set('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
     res.json(rooms);
 });
 

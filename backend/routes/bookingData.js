@@ -1,8 +1,8 @@
 import express from 'express';
-import fs from 'fs';
 import { google } from 'googleapis';
 import dayjs from 'dayjs';
 import dotenv from 'dotenv';
+dotenv.config();
 
 
 const ROOM_TYPES = [
@@ -12,6 +12,7 @@ const ROOM_TYPES = [
     { id: 'executive', name: 'Executive Room', price: 4000, description: "Luxurious room with premium amenities" },
     { id: 'special-executive', name: 'Special Executive Room', price: 4500, description: "Exclusive room with special features" },
     { id: 'family', name: 'Family Room', price: 5000, description: "Spacious room for families" },
+
 ];
 
 const LOCATION_DATA = {
@@ -22,15 +23,14 @@ const LOCATION_DATA = {
         { name: 'Facebook', url: 'https://www.facebook.com/hotelinigo' },
         { name: 'Messenger', url: 'https://www.facebook.com/hotelinigo' }
     ]
+
 };
 
 
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;
 const SHEET_NAME = 'Bookings';
 
-
-dotenv.config();
-const CREDENTIALS = JSON.parse(process.env.GOOGLE_SHEET_CREDENTIALS);
+const CREDENTIALS = JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS);
 
 const auth = new google.auth.GoogleAuth({
     credentials: CREDENTIALS,
@@ -42,6 +42,37 @@ const sheets = google.sheets({ version: 'v4', auth });
 const router = express.Router();
 router.use(express.json());
 
+function asyncHandler(fn) {
+    return function (req, res, next) {
+        Promise.resolve(fn(req, res, next)).catch(next);
+    };
+}
+
+router.use((req, res, next) => {
+    if (req.method === 'GET') {
+     res.set('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
+    }
+    next();
+});
+
+
+let bookingCache = [];
+let lastCacheTime = 0;
+const CACHE_EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutes
+
+async function fetchBookingCache() {
+    const now = Date.now();
+    if (now - lastCacheTime > CACHE_EXPIRATION_TIME || bookingCache.length === 0) {
+        const res = await sheets.spreadsheets.values.get({
+            spreadsheetId: SHEET_ID,
+            range: `${SHEET_NAME}!A2:J`,
+        });
+        bookingCache = res.data.values || [];
+        lastCacheTime = now;
+        console.log('Booking cache refreshed:', bookingCache.length, 'records');
+    }
+    return bookingCache;
+}
 
 async function appendBookingToSheet(data) {
     const values = [
@@ -74,7 +105,6 @@ async function appendBookingToSheet(data) {
 }
 
 //helper: Calculate nights and total price
-
 function calculateNights(checkIn, checkOut) {
     if (!checkIn || !checkOut) return 0;
     const inDate = dayjs(checkIn, 'YYYY-MM-DD');
@@ -87,6 +117,7 @@ function getPricePerNight(roomTypeId) {
     const selectedRoom = ROOM_TYPES.find(r => r.id === roomTypeId);
     return selectedRoom ? selectedRoom.price : 0;
 }
+
 // Helper: Check room availability (simple version)
 async function isRoomAvailable(roomType, checkIn, checkOut) {
     const res = await sheets.spreadsheets.values.get({
@@ -94,7 +125,7 @@ async function isRoomAvailable(roomType, checkIn, checkOut) {
         range: `${SHEET_NAME}!A2:J`,
     });
 
-    const rows = res.data.values || [];
+    const rows = await fetchBookingCache();
     const reqCheckIn = dayjs(checkIn, 'YYYY-MM-DD');
     const reqCheckOut = dayjs(checkOut, 'YYYY-MM-DD');
 
@@ -113,13 +144,12 @@ async function isRoomAvailable(roomType, checkIn, checkOut) {
 }
 
 
-router.get('/room-types', (req, res) => res.json(ROOM_TYPES));
+router.get('/room-types', (req, res) => {res.json(ROOM_TYPES)});
 
-router.get('/location', (req, res) => res.json(LOCATION_DATA));
+router.get('/location', (req, res) => {res.json(LOCATION_DATA)});
 
-
-router.post('/submit', async (req, res) => {
-    try {
+router.post('/submit', asyncHandler (async(req, res) => {
+    
         const data = req.body;
         console.log('Booking data:', data);
 
@@ -132,15 +162,15 @@ router.post('/submit', async (req, res) => {
             nights,
             totalPrice,
             sheetRow: [
-                data.firstName,
-                data.lastName,
-                data.age,
-                data.email,
-                data.contactNo,
-                data.guests,
-                data.checkIn,
-                data.checkOut,
-                data.roomType,
+                data.firstName ||'',
+                data.lastName ||'',
+                data.age ||'',
+                data.email ||'',
+                data.contactNo ||'',
+                data.guests ||'',
+                data.checkIn ||'',
+                data.checkOut ||'',
+                data.roomType ||'',
                 data.message || '',
                 pricePerNight,
                 nights,
@@ -156,11 +186,10 @@ router.post('/submit', async (req, res) => {
 
         await appendBookingToSheet({ ...data, pricePerNight, nights, totalPrice });
 
+        bookingCache = []; // Clear cache after booking
+        lastCacheTime = 0; // Reset cache time
 
         res.json({ success: true, message: 'Booking data received successfully!' });
-    } catch (error) {
-        console.log('Booking error:', error);
-        res.status(500).json({ success: false, message: 'An error occurred while processing your booking.' });
-    }
-});
+    
+}));
 export default router;
